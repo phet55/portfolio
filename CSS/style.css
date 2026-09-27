@@ -1,0 +1,536 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  overflow-x: hidden
+}
+
+.headerimage {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  display:flex;
+  align-items: center;
+}
+
+/* ==================================
+   แสงเรืองสวรรค์ (Divine Glow Effect)
+===================================== */
+.divine-light {
+  position: absolute;
+  top: 15%;            /* ปรับตำแหน่งตามจุดกำเนิดแสงในภาพ */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: 90vw;
+  max-width: 900px;
+  max-height: 900px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;          /* อยู่เหนือภาพพื้นหลัง แต่อยู่ใต้ตัวอักษรและเทพ */
+
+  /* จุดเด่น: ใช้โหมดผสมสีให้แสงกลืนไปกับภาพวาด */
+  mix-blend-mode: screen; 
+
+  /* ไล่เฉดจากแกนกลางสีขาวทอง สู่สีทองโบราณ และโปร่งใส */
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 240, 0.95) 0%,     /* จุดกึ่งกลาง: แสงจ้าเกือบขาว */
+    rgba(255, 215, 120, 0.6) 25%,     /* รัศมีชั้นใน: สีทองสวรรค์ */
+    rgba(218, 165, 32, 0.3) 50%,      /* รัศมีชั้นกลาง: สีทองอำพัน */
+    rgba(0, 0, 0, 0) 75%              /* ขอบนอก: โปร่งใสกลืนไปกับท้องฟ้า */
+  );
+  filter: blur(25px);
+}
+.hero-content {
+  position: absolute;
+  top:10%;
+  left: 50%;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transform: rotateX(20deg) rotateY(-15deg);
+  perspective: 500px;
+  
+  /* Google fonts */
+  font-size: 3rem;
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  font-style: normal;
+  z-index: -9;
+}
+/* ==============
+    video
+ ============== */
+.hero-video{
+  position: absolute;
+  top:10%;
+  left: 48%;
+  transform: rotateX(20deg) rotateY(-15deg);
+  perspective: 500px;
+  width: 450px;
+  height: 150px;
+  object-fit: cover;
+  z-index: -10;
+  border-radius: 10px;
+  box-shadow: 20px 40px 8px rgba(10, 10, 10, 0.2);
+}
+/* ==============
+    Name
+ ============== */
+.Name{
+position: absolute;
+  top: 22%;
+  left: 17%;
+  font-size: 3.5rem;
+  transform: rotateX(-30deg) rotateY(-15deg);
+  color: white;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  z-index: 5;
+  font-weight: bold;
+}
+
+.Name-video{
+  position: absolute;
+  top: 25%;
+  left: 16%;
+  width: 880px;
+  height: 150px;
+  object-fit: cover;
+  z-index: -10;
+  border-radius: 10px;
+  box-shadow: 20px 40px 8px rgba(10, 10, 10, 0.2);
+  transform: rotateX(-30deg) rotateY(-15deg);
+}
+.hero-media {
+  width: 100%;      
+  max-width: 100%;    
+  height: auto;     
+  object-fit: cover;     
+  padding: 0;
+  z-index: -10;
+} 
+ /* ===========
+       Cloude
+    ============= */
+.cloud-group {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 7;
+}
+
+.hero-icon-left {
+  position: absolute;
+  top:37%;               
+  left: -5%;         
+  width: clamp(250px, 30vw, 450px);
+  transform: rotate(0deg)translate3d(0, var(--scroll-y, 0px), 0) scale(var(--scroll-zoom, 1));
+  scale: 2;
+}
+
+.hero-icon-right {
+  position: absolute;
+  top:37%;
+  right: -5%;      
+  width: clamp(250px, 30vw, 450px);
+  transform: scaleX(-1) translate3d(0, var(--scroll-y, 0px), 0) scale(var(--scroll-zoom, 1));
+  scale: 2;
+}
+
+.hero-icon-top {
+  position: absolute;
+  bottom: -20px;      
+  left: 35%;         
+  width: clamp(280px, 32vw, 480px);
+  transform: rotate(-12deg) translate3d(0, var(--scroll-y, 0px), 0) scale(var(--scroll-zoom, 1));
+  scale: 2;
+}
+
+.hero-icon-top1 {
+  position: absolute;
+  top: 80%;    
+  right: 45%;         
+  width: clamp(280px, 32vw, 480px);
+  transform: scaleX(-1) rotate(-16deg) translate3d(0, var(--scroll-y, 0px), 0) scale(var(--scroll-zoom, 1));
+  scale: 3;
+}
+
+.hero-icon-left,
+.hero-icon-right,
+.hero-icon-top,
+.hero-icon-top1 {
+  transition: opacity 0.1s ease-out;
+  will-change: transform, opacity;
+}
+
+/* ============
+   Angle Floating Animations
+=============== */
+@keyframes floatAngel1 {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-22px); 
+  }
+}
+
+@keyframes floatAngel2 {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-28px); 
+  }
+}
+
+/* ============
+   Angle Icons
+ =============== */
+
+
+.hero-angle1{
+    top: 40%;
+    position: absolute;
+    left:20%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    width: 350px;
+    animation: floatAngel1 5s ease-in-out infinite;
+}
+.hero-angle2{
+    top: 55%;
+    position: absolute;
+    left:80%;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+    width: 400px;
+    animation: floatAngel2 6.5s ease-in-out infinite 0.6s;
+}
+/* ========================
+   Fog Overlay
+=========================== */
+.fog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 1) 0%, rgba(245, 243, 238, 0.98) 100%);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 50;
+  transition: opacity 0.08s ease-out;
+  will-change: opacity;
+}
+/* ===============
+   World
+ =============== */
+.world {
+  position: relative;
+  width: 100%;
+  min-height: 1200px;
+  /* overflow: hidden; */
+  margin: 0;
+  padding: 140px 0 80px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -20px;
+}
+
+.background-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.world-cloud, .world-cloud1, .world-cloud2, .world-cloud3, .world-cloud4 {
+  position: absolute;
+  object-fit: cover;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.world-cloud  { top: -40%; left: 0%; transform: rotate(33deg); }
+.world-cloud1 { top: -50%; right: 45%; transform: rotate(-23deg); }
+.world-cloud2 { top: -50%; right: 5%; transform: rotate(23deg); scale: 1.5; }
+.world-cloud3 { top: -50%; left: 65%; transform: rotate(20deg); scale: 1.2; }
+.world-cloud4 { top: -50%; right: 70%; transform: rotate(-20deg); scale: 1.2; }
+ 
+/* ==========
+   Eye & Bird
+=============== */
+.eye-sky {
+  position: absolute;
+  z-index: 11;
+  display: flex;
+  right: 80%;
+  top: 55%;
+
+}
+
+.eye_sky1 {
+  width: clamp(120px, 14vw, 200px);
+  height: auto;
+ 
+}
+
+.bird {
+  position: absolute;
+  top: 55%;
+  right: 10%;        
+  z-index: 11;
+}
+
+.bird-img {
+  width: clamp(80px, 10vw, 140px);
+  height: auto;
+  transform: scaleX(1);
+  animation: floatAngel2 2.5s ease-in-out infinite 1s;
+}
+
+/* ============
+   About Me
+=============== */
+.detail {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  color: rgb(14, 13, 13);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-family: "Playfair Display", serif;
+  max-width: 800px;
+  padding: 0 20px;
+  margin: 10px auto 40px;
+  top: 600px;
+}
+
+.detail h2 {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+}
+
+.detail p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+}
+
+/* ============
+   Cards 
+=============== */
+.card-content {
+  position: relative;
+  z-index: 5;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  top: 600px;
+}
+
+.card1, .card2, .card3, .card4 {
+  background-color: #e7e4e4;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 3px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: block;
+}
+
+.card1:hover, .card2:hover, .card3:hover, .card4:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  border-color: rgb(160, 163, 163);
+}
+
+.card1 a, .card2 a, .card3 a, .card4 a { 
+  text-decoration: none; 
+}
+
+/* =====================================
+   Page Transition: The Creation of Adam
+======================================== */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; 
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+.transition-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #1b1713 0%, #080706 100%);
+  opacity: 0.96;
+}
+.hand {
+  position: absolute;
+  width: clamp(250px, 35vw, 550px);
+  object-fit: contain;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.8));
+}
+
+/* ตำแหน่งเริ่มต้น: ซ่อนอยู่นอกจอ */
+.hand-left {
+  left: 0;
+  bottom: 10%;
+  transform: translate(-120%, 30%) rotate(15deg); /* หลุดไปทางซ้ายล่าง */
+}
+
+.hand-right {
+  right: 0;
+  top: 15%;
+  transform: translate(120%, -30%) rotate(-10deg); /* หลุดไปทางขวาบน */
+}
+
+/* ประกายแสงศักดิ์สิทธิ์ตรงจุดสัมผัส */
+.divine-spark {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, #fffdf0 0%, #d4af37 40%, rgba(212, 175, 55, 0) 70%);
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: blur(8px);
+  opacity: 0;
+}
+
+.transition-text {
+  position: absolute;
+  bottom: 8%;
+  color: #c5a059;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 0.4em;
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* =====================================
+   สถานะเมื่อเริ่มโหลด (Active Class)
+======================================== */
+.page-transition.is-active {
+  pointer-events: all; 
+  opacity: 1;
+  visibility: visible;
+}
+
+/* มือทั้งสองข้างพุ่งเข้าหากึ่งกลาง */
+.page-transition.is-active .hand-left {
+  transform: translate(-18%, -5%) rotate(0deg);
+}
+
+.page-transition.is-active .hand-right {
+  transform: translate(18%, 5%) rotate(0deg);
+}
+
+/* จังหวะแสงวาบเมื่อปลายนิ้วเข้าใกล้กัน */
+.page-transition.is-active .divine-spark {
+  animation: sparkFlash 0.6s ease-out 0.65s forwards;
+}
+
+.page-transition.is-active .transition-text {
+  transition: opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s;
+  opacity: 0.8;
+  transform: translateY(0);
+}
+
+@keyframes sparkFlash {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(2.2);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(1.6);
+    filter: blur(12px);
+  }
+}
+
+/* ========================================================
+   5. DESKTOP MEDIA
+======================================================== */
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  .hero-angle1 {
+    left: 2%;
+    top: 35%;
+  }
+
+  .hero-angle2 {
+    right: 2%;
+    top: 40%;
+  }
+
+  .Name {
+    left: 17%;
+    top: 22%;
+  }
+  .Name-video {
+    left: 17%;
+    top: 22%;
+  }
+
+  .card-content {
+    gap: 16px;
+  }
+}
+
+
+@media screen and (min-width: 1921px) {
+  .hero-content, .hero-video {
+    top: 12%;
+  }
+  
+  .hero-angle1 {
+    left: 14%;
+  }
+  
+  .hero-angle2 {
+    right: 12%;
+  }
+
+  .Name, .Name-video {
+    left: 26%;
+  }
+}

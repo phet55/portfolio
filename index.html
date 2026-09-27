@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Romanesco&display=swap" rel="stylesheet">
+    <title>Portfolio</title>
+    
+</head>
+
+<body>
+
+
+    <div class="headerimage">
+        <img src="image/sky-haven.jpg" alt="Sky Haven" class="hero-media">
+
+        <div class="divine-light"></div>
+
+        <div class="hero-content">
+            <h1>Portfolio</h1>
+        </div>
+        <div class="vdocontent">
+            <video autoplay muted loop class="hero-video">
+                    <source src="image/paper.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="Name">
+            <h1>Adison Phobiasi</h1>
+        </div>
+        <div class="vdoName">
+             <video autoplay muted loop class="Name-video">
+                    <source src="image/paper.mp4" type="video/mp4">
+            </video>
+        </div>
+        <!-- Angle -->
+        <img src="image/angle1.png" alt="Logo Icon" class="hero-angle1">
+        <img src="image/angle2.png" alt="Logo Icon" class="hero-angle2">
+        
+        <div class="cloud-group">
+            <img src="image/cloude1.png" alt="Logo Icon" class="hero-icon-left">
+            <img src="image/cloude1.png" alt="Logo Icon" class="hero-icon-right">
+            <img src="image/cloude1 - Copy.png" alt="Logo Icon" class="hero-icon-top">
+            <img src="image/cloude1 - Copy.png" alt="Logo Icon" class="hero-icon-top1">
+        </div>
+        
+    </div>
+    </div> <div class="fog-overlay"></div>
+    <!-- world -->
+    <div class="world">
+        <img src="image/sky.jpg" alt="Logo Icon" class="background-sky">
+        <img src="image/cloud-world.png" alt="Logo Icon" class="world-cloud">
+        <img src="image/cloud-world.png" alt="Logo Icon" class="world-cloud1">
+        <img src="image/cloud-world.png" alt="Logo Icon" class="world-cloud2">
+        <img src="image/cloud-world.png" alt="Logo Icon" class="world-cloud3">
+         <img src="image/cloud-world.png" alt="Logo Icon" class="world-cloud4">
+
+    <div class="eye-sky">
+        <img src="image/eyeinthesky.png" alt="Logo Icon" class="eye_sky1">
+    </div>
+
+    <div class="bird">
+        <img src="image/Vintage Bird.png" alt="Logo Icon" class="bird-img">
+    </div>
+
+    <div class="detail">
+        <h2>About Me</h2>
+        <p>Welcome to my portfolio! I'm a passionate web developer with a love for creating beautiful and functional websites.</p>
+    </div>
+
+    <div class="card-content">
+        <div class="card1">
+            <h3>Card 1</h3>
+            <p>This is the content for the first card.</p>
+            <a href="Galaxy.html">Learn More</a>
+        </div>
+        <div class="card2">
+            <h3>Card 2</h3>
+            <p>This is the content for the second card.</p>
+            <a href="#">Learn More</a>
+        </div>
+        <div class="card3">
+            <h3>Card 3</h3>
+            <p>This is the content for the third card.</p>
+            <a href="#">Learn More</a>
+        </div>
+
+    </div>
+    </div>
+<script>
+  const fogOverlay = document.querySelector('.fog-overlay');
+  const heroClouds = document.querySelectorAll(
+    '.hero-icon-left, .hero-icon-right, .hero-icon-top, .hero-icon-top1'
+  );
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    const fogStart = 100;   // เริ่มเกิดหมอก
+    const fogFull = 220;    // หมอกขาวโพลน 100%
+    const fogHold =600;    // จุดสิ้นสุดการค้างหมอกขาว
+    const fogEnd = 1000;    // หมอกจางหายหมด เข้าสู่ class .world เต็มตัว
+
+    let fogOpacity = 0;
+ 
+    if (scrollY < fogStart) {
+      fogOpacity = 0;
+    } else if (scrollY >= fogStart && scrollY < fogFull) {
+     
+      fogOpacity = (scrollY - fogStart) / (fogFull - fogStart);
+    } else if (scrollY >= fogFull && scrollY <= fogHold) {
+      
+      fogOpacity = 1;
+    } else if (scrollY > fogHold && scrollY <= fogEnd) {
+      
+      fogOpacity = 1 - ((scrollY - fogHold) / (fogEnd - fogHold));
+    } else {
+      fogOpacity = 0;
+    }
+    if (fogOverlay) {
+      fogOverlay.style.opacity = fogOpacity;
+    }
+
+  heroClouds.forEach((cloud, index) => {
+      const zoom = 1 + (scrollY * 0.0015 * (index + 1));
+      const moveUp = scrollY * -0.2;
+      
+      cloud.style.setProperty('--scroll-y', `${moveUp}px`);
+      cloud.style.setProperty('--scroll-zoom', zoom);
+    });
+  });
+</script>
+
+<div id="page-transition" class="page-transition">
+  <div class="transition-bg"></div>
+  
+  <img src="image/hand-adam.png" alt="Hand of Adam" class="hand hand-left">
+  
+  <div class="divine-spark"></div>
+  
+  <img src="image/hand-god.png" alt="Hand of God" class="hand hand-right">
+
+  <p class="transition-text">ENTERING...</p>
+  <script>
+  const transitionOverlay = document.getElementById('page-transition');
+  const links = document.querySelectorAll('a');
+
+  links.forEach(link => {
+    link.addEventListener('click', function (e) {
+      const targetUrl = this.getAttribute('href');
+
+      
+      if (
+        !targetUrl ||
+        targetUrl.startsWith('#') ||
+        targetUrl.startsWith('mailto:') ||
+        targetUrl.startsWith('tel:') ||
+        this.getAttribute('target') === '_blank'
+      ) {
+        return;
+      }
+
+      // 1. ระงับการเปลี่ยนหน้าแบบทันที
+      e.preventDefault();
+
+      transitionOverlay.classList.add('is-active');
+
+      
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 1100);
+    });
+  });
+
+  
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted && transitionOverlay) {
+      transitionOverlay.classList.remove('is-active');
+    }
+  });
+</script>
+</div>
+</body>
+</html>

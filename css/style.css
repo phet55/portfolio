@@ -534,3 +534,128 @@ position: absolute;
     left: 26%;
   }
 }
+
+@media screen and (max-width: 1023px) {
+  .hero-content {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+  }
+
+  .hero-video {
+    left: 48%;
+    width: clamp(220px, 34vw, 450px);
+    height: clamp(90px, 12vw, 150px);
+  }
+
+  .Name {
+    left: 10%;
+    top: 22%;
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
+  }
+
+  .Name-video {
+    left: 9%;
+    top: 25%;
+    width: clamp(300px, 65vw, 880px);
+    height: clamp(90px, 12vw, 150px);
+  }
+
+  .hero-angle1,
+  .hero-angle2 {
+    width: clamp(180px, 28vw, 350px);
+  }
+
+  .hero-angle1 {
+    left: 14%;
+  }
+
+  .hero-angle2 {
+    left: 86%;
+  }
+
+  .world {
+    min-height: 1000px;
+  }
+
+  .detail,
+  .card-content {
+    top: 450px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hero-video,
+  .Name-video {
+    display: none;
+  }
+
+  .hero-content {
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%) rotateX(20deg) rotateY(-15deg);
+    white-space: nowrap;
+  }
+
+  .Name {
+    top: 24%;
+    left: 50%;
+    transform: translateX(-50%) rotateX(-20deg) rotateY(-15deg);
+    font-size: clamp(1.35rem, 7vw, 2.5rem);
+    white-space: nowrap;
+  }
+
+  .hero-angle1,
+  .hero-angle2 {
+    width: clamp(130px, 34vw, 220px);
+  }
+
+  .hero-angle1 {
+    left: 12%;
+    top: 42%;
+  }
+
+  .hero-angle2 {
+    left: 88%;
+    top: 52%;
+  }
+
+  .hero-icon-left,
+  .hero-icon-right {
+    width: clamp(160px, 42vw, 280px);
+  }
+
+  .hero-icon-top,
+  .hero-icon-top1 {
+    width: clamp(180px, 46vw, 300px);
+  }
+
+  .world {
+    min-height: 1100px;
+    padding-top: 90px;
+  }
+
+  .detail,
+  .card-content {
+    top: 300px;
+  }
+
+  .detail h2 {
+    font-size: 2rem;
+  }
+
+  .detail p {
+    font-size: 1rem;
+  }
+
+  .card-content {
+    width: min(90%, 420px);
+    grid-template-columns: 1fr;
+  }
+
+  .eye-sky {
+    right: 70%;
+  }
+
+  .bird {
+    right: 5%;
+  }
+}
